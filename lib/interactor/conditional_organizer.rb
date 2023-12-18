@@ -9,7 +9,7 @@ module Interactor
 
     def call
       self.class.organized.each do |interactor|
-        interactor[:class].call!(context) if interactor[:if] && send(interactor[:if])
+        interactor[:class].call!(context) if !interactor[:if] || send(interactor[:if])
       end
     end
 
